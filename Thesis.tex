@@ -21,7 +21,7 @@
 %---------------------------------------------------------------------------%
 %->> Document settings
 %---------------------------------------------------------------------------%
-\usepackage[numbers,list,xhf]{Style/artratex}% document settings
+\usepackage[super,list,xhf]{Style/artratex}% document settings
 %- usage: \usepackage[option1,option2,...,optionN]{artratex}
 %- Multiple optional arguments:
 %- [bibtex|biber]% set bibliography processor and package
@@ -65,6 +65,8 @@
 %---------------------------------------------------------------------------%
 %->> Document content
 %---------------------------------------------------------------------------%
+\sloppy  % 使用sloppy模式，允许更宽松的断行规则，解决英文单词溢出
+
 %-
 %-> Titlepage information
 %-

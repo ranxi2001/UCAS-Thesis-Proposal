@@ -470,6 +470,56 @@
     \fi\fi\fi\fi
 \fi
 %-
+%-> Fix English word overflow in Chinese text (中英文混排英文单词溢出修复)
+%-
+% 全局设置，适用于所有引擎
+\tolerance=5000  % 大幅增加断行容忍度（默认200）
+\emergencystretch=3em  % 增加紧急情况下的拉伸空间
+\hbadness=5000  % 提高badness阈值，减少警告
+\hfuzz=1pt  % 允许1pt的溢出而不报warning
+
+% 降低断字惩罚
+\hyphenpenalty=100  % 降低连字符惩罚
+\exhyphenpenalty=100  % 降低显式连字符惩罚
+
+% 设置行间距调整参数
+\pretolerance=2000  % 第一次尝试断行的容忍度
+\linepenalty=10  % 降低额外行的惩罚
+
+\ifartx@xetex
+    % XeTeX 特定设置
+    \XeTeXlinebreaklocale "zh"  % 设置中文断行规则
+    \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt  % 设置行间弹性空间
+    
+    % 允许在标点后断行
+    \xeCJKsetup{
+        CJKglue = {\hskip 0pt plus 0.08\baselineskip},
+        CJKecglue = {\hskip 0.15em plus 0.05em minus 0.05em}
+    }
+\fi
+%-
+%-> Microtype for better typography (改善排版质量)
+%-
+\ifartx@xetex
+    \RequirePackage{microtype}  % 微调字体间距和字形，改善排版
+    \microtypesetup{
+        protrusion=true,  % 字符伸出
+        expansion=false,  % XeTeX不支持expansion
+        tracking=true,    % 字符跟踪
+        kerning=true,     % 字距调整
+        spacing=true      % 间距调整
+    }
+\else\ifartx@luatex
+    \RequirePackage{microtype}
+    \microtypesetup{
+        protrusion=true,
+        expansion=true,   % LuaTeX支持expansion
+        tracking=true,
+        kerning=true,
+        spacing=true
+    }
+\fi\fi
+%-
 %-> Bibliography processor and package
 %-
 \def\artxbibref{Biblio/ref.bib}% bibliography reference file
