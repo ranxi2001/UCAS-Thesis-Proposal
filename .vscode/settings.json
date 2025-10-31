@@ -1,0 +1,216 @@
+{
+    // ===========================================================================
+    // LaTeX Workshop 配置 - 中文论文编译环境
+    // ===========================================================================
+
+    // ---------------------------------------------------------------------------
+    // 编译工具定义
+    // ---------------------------------------------------------------------------
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-f",
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
+
+    // ---------------------------------------------------------------------------
+    // 编译方案（recipes）
+    // ---------------------------------------------------------------------------
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk 🚀 (推荐-自动处理一切)",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "XeLaTeX ➜ BibTeX ➜ XeLaTeX×2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "XeLaTeX×2 (更新目录/交叉引用)",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "XeLaTeX (快速预览)",
+            "tools": [
+                "xelatex"
+            ]
+        }
+    ],
+
+    // ---------------------------------------------------------------------------
+    // 编译行为设置
+    // ---------------------------------------------------------------------------
+    // 默认使用第一个编译方案（latexmk 自动完整编译）
+    "latex-workshop.latex.recipe.default": "first",
+    
+    // 保存时不自动编译（手动控制编译时机）
+    "latex-workshop.latex.autoBuild.run": "never",
+    
+    // 编译出错时的行为
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+    
+    // 最后一次成功的编译方案会被记住并优先使用
+    "latex-workshop.latex.recipe.default": "lastUsed",
+
+    // ---------------------------------------------------------------------------
+    // PDF 查看器设置
+    // ---------------------------------------------------------------------------
+    // 使用内置 PDF 查看器（推荐，支持正反向同步）
+    "latex-workshop.view.pdf.viewer": "tab",
+    
+    // PDF 查看器内部查看器位置
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    
+    // 编译后自动刷新 PDF
+    "latex-workshop.view.pdf.ref.viewer": "auto",
+    
+    // PDF 缩放模式
+    "latex-workshop.view.pdf.zoom": "page-width",
+
+    // ---------------------------------------------------------------------------
+    // 自动清理设置
+    // ---------------------------------------------------------------------------
+    // 编译成功后不自动清理（保留中间文件便于调试）
+    "latex-workshop.latex.autoClean.run": "never",
+    
+    // 手动清理时要删除的文件类型
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.synctex.gz",
+        "*.xdv",
+        "*.run.xml",
+        "*.bcf",
+        "*.nav",
+        "*.snm",
+        "*.vrb"
+    ],
+    
+    // 清理时不删除的子目录
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+
+    // ---------------------------------------------------------------------------
+    // 智能提示和补全
+    // ---------------------------------------------------------------------------
+    // 启用智能提示
+    "latex-workshop.intellisense.package.enabled": true,
+    
+    // 启用参考文献补全
+    "latex-workshop.intellisense.citation.label": "bibtex key",
+    
+    // 启用文件路径补全
+    "latex-workshop.intellisense.file.enabled": true,
+    
+    // 启用公式预览
+    "latex-workshop.hover.preview.enabled": true,
+    
+    // 启用参考文献预览
+    "latex-workshop.hover.citation.enabled": true,
+    
+    // 启用引用预览
+    "latex-workshop.hover.ref.enabled": true,
+
+    // ---------------------------------------------------------------------------
+    // 错误和警告显示
+    // ---------------------------------------------------------------------------
+    // 显示编译输出
+    "latex-workshop.message.log.show": false,
+    
+    // 显示LaTeX编译器输出（过滤掉无害的警告）
+    "latex-workshop.message.latexlog.exclude": [
+        "^Underfull",
+        "^Overfull",
+        "Package microtype Error"
+    ],
+    
+    // 错误提示位置
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.message.warning.show": false,
+    
+    // 忽略编译返回码（microtype 在 XeLaTeX 下会返回错误码但编译成功）
+    "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": false,
+
+    // ---------------------------------------------------------------------------
+    // 其他优化设置
+    // ---------------------------------------------------------------------------
+    // 启用代码折叠
+    "latex-workshop.latex.outDir": "%DIR%",
+    
+    // 监视文件变化
+    "latex-workshop.latex.watch.files.ignore": [
+        "**/*.aux",
+        "**/*.bbl",
+        "**/*.blg",
+        "**/*.log",
+        "**/*.out",
+        "**/*.toc",
+        "**/*.synctex.gz"
+    ],
+    
+    // 编译过程中的魔法注释支持
+    "latex-workshop.latex.magic.args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error"
+    ],
+    
+    // BibTeX 格式化
+    "latex-workshop.bibtex-format.tab": "4 spaces",
+    "latex-workshop.bibtex-format.trailingComma": false,
+    "latex-workshop.bibtex-format.sortby": ["author", "year", "title"]
+}
